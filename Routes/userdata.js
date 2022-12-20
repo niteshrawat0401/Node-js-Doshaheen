@@ -17,7 +17,7 @@ userRouter.post("/", async (req, res) => {
     }
   });
 });
-// vishalpandita@doshaheen.com
+
 userRouter.post("/user", async (req, res) => {
   const { name, mobile } = req.body;
 
