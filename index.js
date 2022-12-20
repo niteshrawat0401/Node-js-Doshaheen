@@ -11,6 +11,6 @@ app.use("/register", userRouter);
 app.get("/", (req, res) => res.send("hello"));
 
 app.listen(8080, async () => {
-  await connect;
-  console.log("Server started on http://localhost:8080");
+    await connect;
+    console.log("Server started on http://localhost:8080");
 });
