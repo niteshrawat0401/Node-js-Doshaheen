@@ -3,14 +3,14 @@ const {Schema, model} = require("mongoose");
 const UserSchema= new Schema({
     name: String,
     mobile: Number,
+    dob: String,
     age: Number,
     mailid: String,
     address: String,
     gender: String,
-    date: String,
     pan : String,
-    aadhar: String,
-    passport: String
+    aadhar: Number,
+    passport: Number
 })
 
 const User= model("users", UserSchema);
