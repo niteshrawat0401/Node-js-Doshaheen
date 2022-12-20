@@ -1,9 +1,16 @@
-const express = require('express')
+const express = require("express");
+const userRouter = require("./Routes/userdata");
+const connect = require("./db/db");
 
-const app = express()
+const app = express();
 
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-app.get('/', (req,res) => res.send('hello'))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.listen(8080, () => {console.log('Server started on http://localhost:8080')})
+app.use("/register", userRouter);
+app.get("/", (req, res) => res.send("hello"));
+
+app.listen(8080, async () => {
+  await connect;
+  console.log("Server started on http://localhost:8080");
+});
