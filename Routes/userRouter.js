@@ -4,8 +4,17 @@ const User = require("../model/user");
 const userRouter = Router();
 
 userRouter.post("/", async (req, res) => {
-  const newuser = await new User(req.body);
-  newuser.save((err, success) => {
+  // const newuser = await new User(req.body);
+  const newUser= req.body;
+  if(!newUser.name||!newUser.mobile||newUser.DOB){
+    return res.status(422).send({message:"fill all the mandatory feilds"})
+  }
+
+  // 422-unprocessable entity;
+  if(newUser.mobile.length!=10){
+    return res.status(422).send({message:"mobile no.should be of 10 digita"})
+  }
+  newUser.save((err, success) => {
     try {
       return res.status(201).send({
         success: true,
@@ -13,7 +22,7 @@ userRouter.post("/", async (req, res) => {
         newuser: success["_doc"],
       });
     } catch (error) {
-      return res.status(500).send({ message: "Something wen wrong" });
+      return res.status(500).send({ message: "Something went wrong" });
     }
   });
 });

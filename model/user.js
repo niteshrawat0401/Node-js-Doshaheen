@@ -3,12 +3,12 @@ const { Schema, model } = require("mongoose");
 const UserSchema = new Schema({
   name: String,
   mobile: Number,
-  dob: String,
+  DOB: String,
   age: Number,
-  mailid: String,
+  mailId: {type:String},
   address: String,
   gender: String,
-  pan: String,
+  PAN: String,
   aadhar: Number,
   passport: Number,
 });
